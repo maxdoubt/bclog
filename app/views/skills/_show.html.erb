@@ -1,0 +1,7 @@
+<div style='font-family: distpro;'><b><%= @skill.name %></b><% if @skill.description != '' %> - <%= @skill.description %><% end %></div>
+
+<% if current_user %>
+  <%= link_to edit_skill_path(@skill) do %>
+    <i class='glyphicon glyphicon-pencil'></i>
+  <% end %>
+<% end %>

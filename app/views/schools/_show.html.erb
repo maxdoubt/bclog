@@ -1,0 +1,11 @@
+<h3><%= @school.name %></h3>
+<!-- <h4><%= @school.start_date.strftime('%Y') %> - <%= @school.end_date.strftime('%Y') %></h4> -->
+<h4><%= @school.degree %></h4>
+  
+<p><%= @school.description %></p>
+
+<% if current_user %>
+    <%= link_to edit_school_path(@school) do %>
+      <i class='glyphicon glyphicon-pencil'></i>
+    <% end %>
+<% end %>

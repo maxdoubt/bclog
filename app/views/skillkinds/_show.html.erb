@@ -1,0 +1,18 @@
+<h3><%= @skillkind.name %></h3>
+
+
+<% if current_user %>
+    <%= link_to new_skill_path(skill: {skillkind_id: @skillkind, profile_id: @profile}) do %>
+      <i class="glyphicon glyphicon-plus"></i>
+    <% end %>
+ 
+    <%= link_to edit_skillkind_path(@skillkind) do %>
+      <i class="glyphicon glyphicon-pencil"></i>
+    <% end %>
+<% end %>
+
+<% @skills = @skillkind.skills %>
+<% @skills.each do |skill| %>
+  <% @skill = skill %>
+  <div><%= render 'skills/show' %></div>
+<% end %>

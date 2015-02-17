@@ -1,0 +1,29 @@
+<%= form_for(@skillkind) do |f| %>
+  <% if @skillkind.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skillkind.errors.count, "error") %> prohibited this skillkind from being saved:</h2>
+
+      <ul>
+      <% @skillkind.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_id %><br>
+    <%= f.number_field :profile_id, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

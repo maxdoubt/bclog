@@ -1,0 +1,126 @@
+<p id="notice"><%= notice %></p>
+
+<script>
+  $(function() {
+	if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+	  skrollr.init({
+	    forceHeight: false,
+        smoothScrolling: false
+	  });
+	}
+    // var s = skrollr.init();
+  });
+</script>
+
+
+<section style='z-index: 500;'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-8'>
+        <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+        <h3><%= @profile.phone[0..2] %>.<%= @profile.phone[3..5] %>.<%= @profile.phone[6..9] %></h3>
+        <h4><%= @profile.email %></h4>
+        <% if current_user %>
+          <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-default' %>
+        <% end %>
+
+        <p>
+          <strong>About me:</strong>
+          <%= @profile.about_me %>
+        </p>
+      </div>
+      <div class='col-xs-4'>
+        <div>
+          <%= image_tag @profile.photo.url(:big), class: 'img-responsive img-circle' %>
+        </div>
+      </div>
+    </div>
+
+
+    <% if current_user %>
+      <%= link_to 'New Job', new_job_path(job: { profile_id: @profile }), class: 'btn btn-default' %>
+      <%= link_to 'New School', new_school_path(school: { profile_id: @profile }), class: 'btn btn-default' %>
+      <%= link_to 'New Skill', new_skill_path(skill: { profile_id: @profile }), class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</section>
+
+<section style='height: 400px;' id='section_one'>
+    <div class='parallax' id='image_one'
+      data-bottom-top='transform:translate(0%,-250px)'
+      data-top-bottom='transform:translate(0%,-50px)'
+      data-anchor-target="#section_one"
+      style='background-image: url(..<%= @profile.section_one.url(:large) %>); width: 100%; height: 600px; z-index: -10;'
+    >
+    </div>
+</section>
+
+
+<section style='z-index: 500;'>
+  <div class='container'>
+    <h1>Skills</h1>
+    <div class='row'>
+    <% @skillkinds.each do |skillkind| %>
+      <% @skillkind = skillkind %>
+      <div class='col-md-12'><%= render 'skillkinds/show' %></div>
+    <% end %>
+    </div>
+  </div>
+</section>
+
+
+<section style='height: 400px;' id='section_two'>
+    <div class='parallax' id='image_two'
+      data-bottom-top='transform:translate(0%,-250px)'
+      data-top-bottom='transform:translate(0%,-50px)'
+      data-anchor-target="#section_two"
+      style='background-image: url(..<%= @profile.section_two.url(:large) %>); width: 100%; height: 600px; z-index: -10;'
+    >
+    </div>
+</section>
+
+
+<section style='z-index: 500;'>
+  <div class='container'>
+    <h1 class='text-center'>Work Experience</h1>
+    <ul class='timeline'>
+        <% @jobs.each_with_index do |job,i| %>
+          <% @job = job %>
+          <% @job_counter = i %>
+            <%= render 'jobs/show' %>
+        <% end %>
+    </ul>
+  </div>
+</section>
+
+<section style='height: 400px;' id='section_three'>
+    <div class='parallax' id='image_three'
+      data-bottom-top='transform:translate(0%,-250px)'
+      data-top-bottom='transform:translate(0%,-50px)'
+      data-anchor-target="#section_three"
+      style='background-image: url(..<%= @profile.section_three.url(:large) %>); width: 100%; height: 600px; z-index: -10;'
+    >
+    </div>
+</section>
+
+<section style='z-index: 500;'>
+  <div class='container'>
+    <h1>Education</h1>
+    <% @schools.each do |school| %>
+      <% @school = school %>
+      <%= render 'schools/show' %>
+    <% end %>
+  </div>
+</section>
+
+<section>
+  <div class='container'>
+    <div>
+    <% if user_signed_in? %>
+      <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-default' %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-default' %>
+    <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,86 @@
+<!-- <div style='width: 612pt; height: 792pt; border: 1px solid black;'></div> -->
+
+<div class='container'>
+    <div id='about'>
+        <div class='row'>
+          <div class='col-xs-10'>
+            <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+            <h4>
+              <div><%= icon('mobile') %><%= @profile.phone[0..2] %>.<%= @profile.phone[3..5] %>.<%= @profile.phone[6..9] %></div>
+              <div><%= icon('envelope-o') %><%= @profile.email %></div>
+              <div><%= icon('map-marker') %><%= @profile.city %>, <%= @profile.state %></div>
+            </h4>
+
+            <p>
+              <strong>About me:</strong>
+              <%= @profile.about_me %>
+            </p>
+          </div>
+          <div class='col-xs-2'>
+            <div style='margin-top: 10px;'>
+              <%= image_tag @profile.photo.url(:big), class: 'img-responsive img-circle' %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+  <div id='skills'>
+    <div class='row'><div class='col-md-12'><h1><%= icon('terminal') %> <span>Knowledge & Skills</span></h1></div></div>
+    <% skillkind_counter = 1 %>
+    <% @skillkinds.each_with_index do |skillkind,i| %>
+      <% @skillkind = skillkind %>
+      <% if skillkind_counter == 1 %>
+        <div class='row'>
+      <% end %>
+          <div class='col-xs-6'>
+              <%= render 'skillkinds/show' %>
+          </div>
+      <% if skillkind_counter == 2 or i+1 == @skillkinds.length %>
+        </div>
+        <% skillkind_counter = 0 %>
+      <% end %>
+      <% skillkind_counter+=1 %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class='container'>
+  <div id='work'>
+  <div class='row'><div class='col-md-12'><h1><%= icon('wrench') %> <span>Work Experience</span></h1></div></div>
+
+    <% job_row_counter = 1 %>
+    <% @jobs.each_with_index do |job,i| %>
+      <% @job = job %>
+      
+      <% if job_row_counter == 1 %>
+        <div class='row'>
+      <% end %>     
+        <div class='col-xs-4 job'>   
+          <%= render 'jobs/print' %>
+        </div>
+      <% if job_row_counter == 3 or i+1 == @jobs.length %>
+        </div>
+        <% job_row_counter = 0 %>
+      <% end %>
+      <% job_row_counter += 1 %>
+
+    <% end %>
+  </div>
+</div>
+
+<div class='container'>
+    <div id='schools'>
+        <div class='row'>
+            <div class='col-md-12'><h1><%= icon('university') %> <span>Education</span></h1></div>
+        </div>
+        <div class='row'>
+            <% @schools.each do |school| %>
+              <% @school = school %>
+              <div class='col-xs-6'><%= render 'schools/show' %></div>
+            <% end %>
+        </div>
+    </div>
+</div>

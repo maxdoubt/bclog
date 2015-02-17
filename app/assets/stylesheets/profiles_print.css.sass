@@ -1,0 +1,114 @@
+@font-face
+    font-family: 'isonorm'
+    src: font-url('isonorm.woff') format('woff')
+    src: font-url('isonorm.ttf') format('truetype')
+
+
+@font-face
+    font-family: 'stmarie'
+    src: font-url('StMarie-Thin.woff')
+    src: font-url('StMarie-Thin.ttf')
+
+@font-face
+    font-family: 'lmroman-i'
+    src: font-url('lmroman10-italic.woff')
+    src: font-url('lmroman10-italic.ttf')    
+
+@font-face
+    font-family: 'lmroman'
+    src: font-url('lmroman10-regular.woff')
+    src: font-url('lmroman10-regular.ttf')    
+
+@font-face
+    font-family: 'distpro'
+    src: font-url('DistProTh.woff')
+    src: font-url('DistProTh.ttf')  
+    
+
+$font-family-sans-serif: 'isonorm'
+$font-family-base: 'distpro'
+$font-size-base: 11px
+
+$font-family-serif: 'distpro'
+$font-family-monospace: 'distpro'
+
+
+$headings-line-height: 1
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+@import "font-awesome-sprockets"
+@import "font-awesome"
+    
+@media all
+    @page
+        size: letter portrait
+        margin: 0cm
+        
+    .page-break
+        display: block
+        page-break-before: always
+        
+        
+    h1
+        // border-bottom: 1px solid #eee
+        // color: white !important
+        // background-color: black !important
+        padding: 0px
+        -webkit-print-color-adjust: exact
+        text-transform: uppercase
+        margin: 10px 0px 0px 0px
+        font-family: isonorm
+        
+    h1 span
+        // border-bottom: 1px solid #eee
+        
+    h1 .fa
+        // font-size: 36px
+        // line-height: 36px
+    
+    h3
+        border-bottom: 1px dotted #eee
+        padding-bottom: 5px
+        margin-bottom: 5px
+        font-family: distpro
+        
+    h4 .fa
+        // border: 1px solid black
+        width: 30px
+        text-align: center
+            
+    #about
+        border-left: 3px solid #eee
+        padding-left: 15px
+        margin-top: 20px
+
+    
+    #skills
+        border-left: 3px solid #eee
+        padding-left: 15px
+        margin-top: 20px
+        
+    #work
+        border-left: 3px solid #eee
+        padding-left: 15px
+        margin-top: 20px
+
+        .job
+            page-break-inside: avoid        
+        
+    #work ul
+        margin: 0px
+        // border: 1px solid black
+        padding-left: 15px
+        
+        li
+            // border: 1px solid black
+            padding: 2px 0px 2px 0px
+            margin: 0px
+        
+    #schools
+        border-left: 3px solid #eee
+        padding-left: 15px
+        margin-top: 20px
