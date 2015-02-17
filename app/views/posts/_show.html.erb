@@ -1,0 +1,17 @@
+<% if params[:action] == 'show' %>
+  <div class='page-header'><h2><%= @post.title %></h2></div>
+<% else %>
+  <h2><%= link_to @post.title, @post %></h2>
+<% end %>
+<p>
+  <strong>By:</strong>
+  <%= link_to @post.profile.first_name, @post.profile %>
+</p>
+
+<p>
+  <%= markdown(@post.content) %>
+</p>
+
+<% if current_user %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>

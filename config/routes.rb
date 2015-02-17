@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :posts
+
+  if Rails.env.production?
+     devise_for :users, :controllers => { :registrations => "registrations" } 
+   else
+     devise_for :users
+   end
   resources :skills
 
   resources :skillkinds
@@ -20,7 +26,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'profiles#show', :id => 1
+  root 'posts#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

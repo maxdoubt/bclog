@@ -1,0 +1,15 @@
+<div class='page-header'>
+  <p>Musings on Art, Design, Music, Technology</p>
+</div>
+
+<% if current_user %>
+  <p><%= link_to 'New Post', new_post_path, class: 'btn btn-default' %></p>
+<% end %>
+
+<% @posts.each do |post| %>
+  <% @post = post %>
+  <div class='post_index'>
+    <%= render 'posts/show' %>
+  </div>
+<% end %>
+

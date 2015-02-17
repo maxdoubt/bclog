@@ -1,8 +1,9 @@
 <h3><%= @school.name %></h3>
 <!-- <h4><%= @school.start_date.strftime('%Y') %> - <%= @school.end_date.strftime('%Y') %></h4> -->
-<h4><%= @school.degree %></h4>
-  
-<p><%= @school.description %></p>
+<% if params[:r] == 'resume_access' %>
+  <h4><%= @school.degree %></h4>
+  <p><%= @school.description %></p>
+<% end %>
 
 <% if current_user %>
     <%= link_to edit_school_path(@school) do %>

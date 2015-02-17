@@ -1,6 +1,8 @@
 class SkillkindsController < ApplicationController
   before_action :set_skillkind, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+
   # GET /skillkinds
   # GET /skillkinds.json
   def index

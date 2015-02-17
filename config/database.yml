@@ -31,4 +31,7 @@ test:
 
 production:
   <<: *default
-  database: business_card
+  database: business_card_development
+  encoding: unicode
+  username: business_card
+  password: Dev123
