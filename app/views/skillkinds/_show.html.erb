@@ -1,7 +1,7 @@
 <h3><%= @skillkind.name %></h3>
 
 
-<% if current_user %>
+<% if current_user and params[:action] == 'show' %>
     <%= link_to new_skill_path(skill: {skillkind_id: @skillkind, profile_id: @profile}) do %>
       <i class="glyphicon glyphicon-plus"></i>
     <% end %>
@@ -11,7 +11,7 @@
     <% end %>
 <% end %>
 
-<% @skills = @skillkind.skills %>
+<% @skills = @skillkind.skills.order(:name) %>
 <% @skills.each do |skill| %>
   <% @skill = skill %>
   <div><%= render 'skills/show' %></div>

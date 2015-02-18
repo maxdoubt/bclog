@@ -3,11 +3,17 @@
 <div class='container'>
     <div id='about'>
         <div class='row'>
-          <div class='col-xs-10'>
+          <div class='col-xs-2'>
+            <div style='margin-top: 10px;'>
+              <%= image_tag @profile.photo.url(:big), class: 'img-responsive img-circle' %>
+            </div>
+          </div>
+          <div class='col-xs-8'>
             <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
             <h4>
               <div><%= icon('mobile') %><%= @profile.phone[0..2] %>.<%= @profile.phone[3..5] %>.<%= @profile.phone[6..9] %></div>
               <div><%= icon('envelope-o') %><%= @profile.email %></div>
+              <div><%= icon('globe') %><%= @profile.website %></div>
               <div><%= icon('map-marker') %><%= @profile.city %>, <%= @profile.state %></div>
             </h4>
 
@@ -15,11 +21,6 @@
               <strong>About me:</strong>
               <%= @profile.about_me %>
             </p>
-          </div>
-          <div class='col-xs-2'>
-            <div style='margin-top: 10px;'>
-              <%= image_tag @profile.photo.url(:big), class: 'img-responsive img-circle' %>
-            </div>
           </div>
         </div>
     </div>

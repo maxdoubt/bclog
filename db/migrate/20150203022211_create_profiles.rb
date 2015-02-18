@@ -6,6 +6,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :about_me
       t.string :phone
       t.string :email
+      t.string :website
       t.string :street
       t.string :city
       t.string :state
