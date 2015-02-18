@@ -10,7 +10,7 @@
         <h4 style='margin: 0px;'>
           <%= @job.organization_name %>
         </h4>
-        <% if params[:r] == 'resume_access' %>
+        <% if params[:r] == 'resume_access' or current_user %>
             <h5 style='margin: 0px;'>
               <%= @job.start_date.strftime('%Y') %> - <% if @job.end_date %><%= @job.end_date.strftime('%Y') %><% else %>Present<% end %>
             </h5>
@@ -18,7 +18,7 @@
     </div>
 
     <div class='timeline-body'>
-        <% if params[:r] == 'resume_access' %>
+        <% if params[:r] == 'resume_access' or current_user %>
             <div>
               <%= markdown(@job.description) %>
             </div>

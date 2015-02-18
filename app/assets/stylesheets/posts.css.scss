@@ -3,5 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post_index {
+    padding-bottom: 75px;
     border-bottom: 1px solid #eee;
+    margin-bottom: 75px;
+}
+
+.by {
+    font-family: lmroman-i;
+}
+
+.author {
+    font-family: lmroman;
+    font-size: 16px;
+    border-top: 1px dotted #eee;
+    border-bottom: 1px dotted #eee;
+    padding-left: 10px;
+    text-align: center;
+
+}
+
+.post_title {
+    text-align: center;
+}
+
+.post_content {
+    margin: 10px 0px 10px 0px;
+}
+
+.post_content p {
+    font-family: lmroman;
+}
+
+.post_image {
+    margin-top: 20px;
 }

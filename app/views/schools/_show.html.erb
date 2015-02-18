@@ -1,6 +1,6 @@
 <h3><%= @school.name %></h3>
 <!-- <h4><%= @school.start_date.strftime('%Y') %> - <%= @school.end_date.strftime('%Y') %></h4> -->
-<% if params[:r] == 'resume_access' %>
+<% if params[:r] == 'resume_access' or current_user %>
   <h4><%= @school.degree %></h4>
   <p><%= @school.description %></p>
 <% end %>

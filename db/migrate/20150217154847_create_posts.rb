@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :profile_id
       t.integer :user_id
       t.boolean :published
+      t.attachment :image
 
       t.timestamps
     end

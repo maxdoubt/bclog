@@ -1,17 +1,32 @@
 <% if params[:action] == 'show' %>
-  <div class='page-header'><h2><%= @post.title %></h2></div>
-<% else %>
-  <h2><%= link_to @post.title, @post %></h2>
-<% end %>
-<p>
-  <strong>By:</strong>
-  <%= link_to @post.profile.first_name, @post.profile %>
-</p>
+  <div class='page-header' style='border-bottom: none;'>
+      <h1 class='post_title'><%= @post.title %></h1>
+      <div class='author'>
+        <span class='by'>by </span>
+        <% name = @post.profile.first_name + ' ' + @post.profile.last_name %>
+        <%= link_to name.upcase, @post.profile %>
+      </div>
+  </div>
 
-<p>
+  <% if @post.image.exists? %><div><%= image_tag @post.image.url(:large), class: 'img-responsive img-rounded' %></div><% end %>
+
+<% else %>
+  <h1 class='post_title' style='font-size: 38px; margin: 10px;'><%= link_to @post.title, @post %></h1>
+  <div class='author'>
+    <span class='by'>by </span>
+    <% name = @post.profile.first_name + ' ' + @post.profile.last_name %>
+    <%= link_to name.upcase, @post.profile %>
+  </div>
+
+   <% if @post.image.exists? %><div class='col-xs-6 post_image'><%= image_tag @post.image.url(:large), class: 'img-responsive img-rounded' %></div><% end %>
+
+<% end %>
+
+<div class='post_content'>
   <%= markdown(@post.content) %>
-</p>
+</div>
 
 <% if current_user %>
   <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

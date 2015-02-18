@@ -18,18 +18,19 @@
     <div class='row'>
       <div class='col-xs-8'>
         <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
-        <% if params[:r] == 'resume_access' %>
-          <h3>
-              <%= @profile.phone[0..2] %>.<%= @profile.phone[3..5] %>.<%= @profile.phone[6..9] %>
-          </h3>
-          <h4><%= @profile.email %></h4>
+        <% if params[:r] == 'resume_access' or current_user %>
+        <h4>
+              <div><%= icon('mobile') %><%= @profile.phone[0..2] %>.<%= @profile.phone[3..5] %>.<%= @profile.phone[6..9] %></div>
+              <div><%= icon('envelope-o') %><%= @profile.email %></div>
+              <div><%= icon('map-marker') %><%= @profile.city %>, <%= @profile.state %></div>
+        </h4>
+
         <% end %>
         <% if current_user %>
           <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-default' %>
         <% end %>
 
         <p>
-          <strong>About me:</strong>
           <%= @profile.about_me %>
         </p>
       </div>
@@ -62,7 +63,7 @@
 
 <section style='z-index: 500;'>
   <div class='container'>
-    <h1>Skills</h1>
+    <h1 class='text-center'><%= icon('terminal') %> SKILLS & KNOWLEDGE</h1>
     <div class='row'>
     <% @skillkinds.each do |skillkind| %>
       <% @skillkind = skillkind %>
@@ -86,7 +87,7 @@
 
 <section style='z-index: 500;'>
   <div class='container'>
-    <h1 class='text-center'>Work Experience</h1>
+    <h1 class='text-center'><%= icon('wrench') %> WORK EXPERIENCE</h1>
     <ul class='timeline'>
         <% @jobs.each_with_index do |job,i| %>
           <% @job = job %>
@@ -109,7 +110,7 @@
 
 <section style='z-index: 500;'>
   <div class='container'>
-    <h1>Education</h1>
+    <h1 class='text-center'><%= icon('university') %> EDUCATION</h1>
     <div class='row'>
     <% @schools.each do |school| %>
       <% @school = school %>

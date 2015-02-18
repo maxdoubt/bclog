@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
+ *= stub profiles_print
  */
 
 
@@ -29,8 +30,18 @@
 
 @font-face
     font-family: 'lmroman'
+    src: font-url('lmroman10-regular.woff')
+    src: font-url('lmroman10-regular.ttf')   
+
+@font-face
+    font-family: 'distpro'
+    src: font-url('DistProTh.woff')
+    src: font-url('DistProTh.ttf')  
+
+@font-face
+    font-family: 'lmroman-i'
     src: font-url('lmroman10-italic.woff')
-    src: font-url('lmroman10-italic.ttf')
+    src: font-url('lmroman10-italic.ttf')    
     
     
 $font-family-sans-serif:  'isonorm'
@@ -44,3 +55,40 @@ $headings-line-height: 1
 
 @import "bootstrap-sprockets"
 @import "bootstrap"
+
+
+@import "font-awesome-sprockets"
+@import "font-awesome"
+
+h2
+    font-family: distpro
+
+h3
+    font-family: isonorm
+
+h4
+    font-family: distpro
+
+    .fa
+        // border: 1px solid black
+        width: 50px
+        text-align: center
+
+h5
+    font-family: distpro
+
+p
+    font-family: distpro
+
+.timeline-body ul
+    margin: 0px
+    padding: 0px
+    list-style-type: none
+    
+    
+.timeline-body ul li
+    font-family: distpro
+    font-size: 14px
+    border-top: 1px solid #eee
+    text-align: justify
+    padding: 5px 0px 5px 0px
