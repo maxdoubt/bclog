@@ -13,11 +13,15 @@ class ResumesController < ApplicationController
   end
 
   def new
-    @resume = Resume.new
+    @resume             = Resume.new
+    @profile            = Profile.find(params[:resume][:profile_id])
+    @resume.profile_id  = @profile.id
+
     respond_with(@resume)
   end
 
   def edit
+    @profile = @resume.profile
   end
 
   def create
@@ -42,6 +46,6 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.require(:resume).permit(:name, :title, :cover, :visits)
+      params.require(:resume).permit(:name, :title, :cover, :visits, :profile_id)
     end
 end

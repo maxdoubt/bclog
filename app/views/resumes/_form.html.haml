@@ -1,0 +1,30 @@
+= form_for(@resume) do |f|
+  - if @resume.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@resume.errors.count, "error")
+        prohibited this resume from being saved:
+
+      %ul
+        - @resume.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .field
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .field
+    = f.label :cover
+    = f.text_area :cover, class: 'form-control'
+
+    = f.hidden_field :profile_id
+
+  - @profile.skills.order(:skillkind_id, :name).each do |skill|
+    = skill.name
+
+  .actions
+    = f.submit class: 'btn btn-default'

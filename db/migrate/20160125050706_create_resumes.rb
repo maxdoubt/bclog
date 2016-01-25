@@ -5,6 +5,7 @@ class CreateResumes < ActiveRecord::Migration
       t.string 	:title
       t.text 	:cover
       t.integer :visits
+      t.integer :profile_id
 
       t.timestamps
     end

@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160125051031) do
     t.string   "title"
     t.text     "cover"
     t.integer  "visits"
+    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

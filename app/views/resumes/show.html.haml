@@ -1,0 +1,12 @@
+%p#notice
+  = notice
+
+%p= @resume.name
+
+%p= @resume.title
+
+%p= @resume.cover
+
+- if current_user
+  = link_to 'Edit', edit_resume_path(@resume)
+  = link_to 'Back', resumes_path
