@@ -1,18 +1,3 @@
-:coffeescript
-  $ ->
-    if !/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent or navigator.vendor or window.opera)
-      skrollr.init
-        forceHeight: false
-        smoothScrolling: false
-    return
-
-:coffeescript
-  $ ->
-    $('#image_one').css 'background-image', "url(..#{@profile.section_one.url(:large)})"
-    $('#image_two').css 'background-image', "url(..#{@profile.section_two.url(:large)})"
-    $('#image_three').css 'background-image', "url(..#{@profile.section_three.url(:large)})"
-
-
 %p#notice
   = notice
 
@@ -35,9 +20,6 @@
             = icon('map-marker')
             = "#{@profile.city}, #{@profile.state}"
 
-%section#section_one.section-parallax
-  .parallax#image_one{'data-bottom-top': 'transform:translate(0%,-250px)', 'data-top-bottom': 'transform:translate(0%,-50px)', 'data-anchor-target': '#section_one'}
-
 %section.text-section
   .container
     %h1 Technical Skills
@@ -54,9 +36,6 @@
 
           - skillkind_id = skill.skillkind_id
 
-%section#section_two.section-parallax
-  .parallax#image_two{'data-bottom-top': 'transform:translate(0%,-250px)', 'data-top-bottom': 'transform:translate(0%,-50px)', 'data-anchor-target': '#section_two'}
-
 %section.text-section
   .container
     %h1 Work Experience
@@ -70,9 +49,6 @@
             •
             = "#{job.start_date.strftime('%Y')} - #{if job.end_date; job.end_date.strftime('%Y'); else; 'Present'; end}"
           = markdown(job.description)
-
-%section#section_three.section-parallax
-  .parallax#image_three{'data-bottom-top': 'transform:translate(0%,-250px)', 'data-top-bottom': 'transform:translate(0%,-50px)', 'data-anchor-target': '#section_three'}
 
 %section.text-section
   .container

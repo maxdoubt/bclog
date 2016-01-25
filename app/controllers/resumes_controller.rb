@@ -1,5 +1,5 @@
 class ResumesController < ApplicationController
-  before_action :set_resume, only: [:show, :edit, :update, :destroy]
+  before_action :set_resume, only: [:show, :print, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -9,14 +9,25 @@ class ResumesController < ApplicationController
   end
 
   def show
-    respond_with(@resume)
+    @profile  = @resume.profile
+    @skills   = @resume.skills.order(:skillkind_id, :name)
+    @jobs     = @profile.jobs.order('start_date DESC')
+    @schools  = @profile.schools.order('start_date DESC')
+  end
+
+  def print
+    @profile  = @resume.profile
+    @skills   = @resume.skills.order(:skillkind_id, :name)
+    @jobs     = @profile.jobs.order('start_date DESC')
+    @schools  = @profile.schools.order('start_date DESC')
+
+    render :layout => 'profiles_print'
   end
 
   def new
     @resume             = Resume.new
     @profile            = Profile.find(params[:resume][:profile_id])
     @resume.profile_id  = @profile.id
-
     respond_with(@resume)
   end
 
@@ -46,6 +57,6 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.require(:resume).permit(:name, :title, :cover, :visits, :profile_id)
+      params.require(:resume).permit(:name, :title, :cover, :visits, :profile_id, skill_ids: [])
     end
 end

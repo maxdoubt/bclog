@@ -37,7 +37,7 @@
     </nav>
 
 
-  <% if params[:controller] == 'profiles' and params[:action] == 'show' %>
+  <% if (params[:controller] == 'profiles' and params[:action] == 'show') or (params[:controller] == 'resumes' and params[:action] == 'show') %>
   <% else %>
     <div class='container'>
   <% end %>

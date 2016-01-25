@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :resumes
+  resources :resumes do
+    member do
+      get 'print'
+    end
+  end
 
   resources :posts
 

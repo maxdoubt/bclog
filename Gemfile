@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # helper
 gem 'paperclip'
 gem 'devise'
+gem 'quiet_assets'
 
 group :production do
   gem 'pg'
